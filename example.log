@@ -1,0 +1,7 @@
+INFO:werkzeug: * Running on http://0.0.0.0:8081/ (Press CTRL+C to quit)
+INFO:root:[{'id': '444444', 'meta': {'path': 'd3/d4', 'created': '2017-10-12', 'name': '模型名称', 'nodetype': 'model'}}]
+INFO:root:[{'id': '444444', 'meta': {'path': 'd3/d4', 'created': '2017-10-12', 'name': '模型名称', 'nodetype': 'model'}}, {'id': '23456', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'path': 'd3/d4', 'name': '模型名称'}}]
+INFO:root:[{'id': '444444', 'meta': {'path': 'd3/d4', 'created': '2017-10-12', 'name': '模型名称', 'nodetype': 'model'}}, {'id': '23456', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'path': 'd3/d4', 'name': '模型名称'}}]
+INFO:root:[{'id': '444444', 'meta': {'path': 'd3/d4', 'created': '2017-10-12', 'name': '模型名称', 'nodetype': 'model'}}, {'id': '23456', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'path': 'd3/d4', 'name': '模型名称'}}, {'id': '890111', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'name': '模型名称', 'path': 'd3/d4'}}]
+INFO:root:[{'id': '444444', 'meta': {'path': 'd3/d4', 'created': '2017-10-12', 'name': '模型名称', 'nodetype': 'model'}}, {'id': '23456', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'path': 'd3/d4', 'name': '模型名称'}}, {'id': '890111', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'name': '模型名称', 'path': 'd3/d4'}}, {'id': '11111', 'meta': {'nodetype': 'model', 'created': '2017-10-12', 'name': '模型名称', 'path': 'd3/d4'}}]
+INFO:werkzeug:172.18.0.22 - - [08/Nov/2017 13:13:49] "GET /v2/projects HTTP/1.1" 200 -

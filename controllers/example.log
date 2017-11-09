@@ -1,0 +1,47 @@
+DEBUG:connexion.apis.flask_api:... Adding GET -> controllers.project_controller.projects_get
+DEBUG:connexion.operation:... Produces: ['application/json']
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b8f840>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.flask_api:... Adding POST -> controllers.project_controller.new_project
+DEBUG:connexion.operation:... Produces: ['text/plain']
+DEBUG:connexion.operation:... Produces text/plain
+DEBUG:connexion.operation:... Adding produces decorator (<Produces: text/plain>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.abstract:Adding /v2/projects/{id}/dataobj...
+DEBUG:connexion.apis.flask_api:... Adding PUT -> controllers.publish_controller.projects_id_dataobj_put
+DEBUG:connexion.operation:... Produces: []
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b93158>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.abstract:Adding /v2/projects/{pid}/directory1/{did}...
+DEBUG:connexion.apis.flask_api:... Adding PUT -> controllers.directory_controller.projects_pid_directory1_did_put
+DEBUG:connexion.operation:... Produces: []
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b93510>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.abstract:Adding /v2/projects/{id}...
+DEBUG:connexion.apis.flask_api:... Adding GET -> controllers.project_controller.projects_id_get
+DEBUG:connexion.operation:... Produces: ['application/json']
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b93950>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.flask_api:... Adding DELETE -> controllers.project_controller.projects_id_delete
+DEBUG:connexion.operation:... Produces: ['application/json']
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b93d08>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.apis.flask_api:... Adding PUT -> controllers.model_controller.projects_id_put
+DEBUG:connexion.operation:... Produces: ['application/json']
+DEBUG:connexion.operation:... Produces json
+DEBUG:connexion.operation:... Adding produces decorator (<function Operation.__content_type_decorator.<locals>.<lambda> at 0x7ff660b95158>)
+DEBUG:connexion.operation:... Security: None
+DEBUG:connexion.operation:... Adding security decorator (<function security_passthrough at 0x7ff660d748c8>)
+DEBUG:connexion.app:Starting flask HTTP server..
+INFO:werkzeug: * Running on http://0.0.0.0:8081/ (Press CTRL+C to quit)

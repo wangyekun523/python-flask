@@ -1,0 +1,439 @@
+---
+swagger: "2.0"
+info:
+  description: "业务对象管理后端 API 列表"
+  version: "1.0.0"
+  title: "BOMS API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "leechau@126.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "172.18.0.251:8081"
+basePath: "/v2"
+tags:
+- name: "project"
+  description: "项目管理"
+- name: "directory"
+  description: "文件夹管理"
+- name: "model"
+  description: "模型文件管理"
+- name: "publish"
+  description: "模型发布相关"
+schemes:
+- "http"
+paths:
+  /projects:
+    get:
+      tags:
+      - "project"
+      summary: "返回项目列表"
+      description: ""
+      operationId: "controllers.project_controller.projects_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            example:
+            - id: 101
+              meta:
+                name: "广东风电"
+                path: "proj1234"
+                type: "project"
+                created: "2017-10-12"
+            - id: 102
+              meta:
+                name: "国网财务分析"
+                path: "proj234"
+                type: "project"
+                created: "2017-10-12"
+            items:
+              $ref: "#/definitions/Meta"
+        405:
+          description: "Invalid input"
+      x-tags:
+      - tag: "project"
+    post:
+      tags:
+      - "project"
+      summary: "新建项目"
+      description: "新建项目"
+      operationId: "controllers.project_controller.new_project"
+      consumes:
+      - "application/json"
+      produces:
+      - "text/plain"
+      parameters:
+      - in: "body"
+        name: "project"
+        description: "待创建项目内容"
+        required: true
+        schema:
+          $ref: "#/definitions/Meta"
+      responses:
+        201:
+          description: "创建项目成功"
+        400:
+          description: "创建项目失败"
+      x-tags:
+      - tag: "project"
+  /projects/{id}:
+    get:
+      tags:
+      - "project"
+      summary: "获取指定项目内容"
+      description: "获取项目内容"
+      operationId: "controllers.project_controller.projects_id_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "success"
+          schema:
+            $ref: "#/definitions/Prometa"
+        404:
+          description: "项目不存在"
+      x-tags:
+      - tag: "project"
+    put:
+      tags:
+      - "model"
+      summary: "更新项目名称/删除模型"
+      description: "更新项目内容"
+      operationId: "controllers.model_controller.projects_id_put"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "project"
+        description: "项目名称"
+        required: true
+        schema:
+          type: "string"
+          example: "\"风电项目\""
+      responses:
+        200:
+          description: "success"
+      x-tags:
+      - hasMore: "true"
+        tag: "model"
+      - tag: "project"
+    delete:
+      tags:
+      - "project"
+      summary: "删除项目"
+      description: "删除项目"
+      operationId: "controllers.project_controller.projects_id_delete"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "Project deleted"
+        404:
+          description: "Project not found"
+      x-tags:
+      - tag: "project"
+  /projects/{id}/directory:
+    post:
+      tags:
+      - "directory"
+      summary: "新建项目目录"
+      description: "新建项目目录"
+      operationId: "controllers.directory_controller.projects_id_directory_post"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "project"
+        description: "项目内容"
+        required: true
+        schema:
+          $ref: "#/definitions/Meta"
+      responses:
+        201:
+          description: "新建目录成功"
+        400:
+          description: "新建目录失败"
+      x-tags:
+      - tag: "directory"
+  /projects/{pid}/directory/{did}:
+    delete:
+      tags:
+      - "directory"
+      summary: "删除项目目录"
+      description: "删除项目目录"
+      operationId: "controllers.directory_controller.projects_pid_directory_did_delete"
+      parameters:
+      - name: "pid"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - name: "did"
+        in: "path"
+        description: "目录ID"
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "directory deleted"
+        404:
+          description: "directory not found"
+      x-tags:
+      - tag: "directory"
+  /projects/{pid}/directory1/{did}:
+    put:
+      tags:
+      - "directory"
+      summary: "更新项目目录"
+      description: "更新项目目录"
+      operationId: "controllers.directory_controller.projects_pid_directory1_did_put"
+      parameters:
+      - name: "pid"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - name: "did"
+        in: "path"
+        description: "项目路径ID"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "project-content"
+        description: "项目内容"
+        required: true
+        schema:
+          $ref: "#/definitions/Meta"
+      responses:
+        201:
+          description: "updata success"
+        400:
+          description: "updata failed"
+      x-tags:
+      - tag: "directory"
+  /projects/{id}/dataobj:
+    put:
+      tags:
+      - "publish"
+      summary: "发布业务对象"
+      description: "发布业务对象"
+      operationId: "controllers.publish_controller.projects_id_dataobj_put"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "发布业务对象成功"
+        404:
+          description: "项目不存在"
+      x-tags:
+      - tag: "publish"
+  /projects/{pid}/model/{mid}:
+    put:
+      tags:
+      - "model"
+      summary: "创建模型/更新模型"
+      description: ""
+      operationId: "controllers.model_controller.projects_pid_model_mid_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pid"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - name: "mid"
+        in: "path"
+        description: "模型ID"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "model-content"
+        description: "项目内容"
+        required: true
+        schema:
+          $ref: "#/definitions/ModelCont"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "failed"
+      x-tags:
+      - tag: "model"
+  /projects/{pid}/model/{mid}/files:
+    get:
+      tags:
+      - "model"
+      summary: "返回模型文件内容"
+      description: ""
+      operationId: "controllers.model_controller.projects_pid_model_mid_files_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pid"
+        in: "path"
+        description: "项目ID"
+        required: true
+        type: "string"
+      - name: "mid"
+        in: "path"
+        description: "模型ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "object"
+            example:
+              meta:
+                id: "model123"
+                name: "模型名称"
+                path: "d3/d4"
+                nodetype: "model"
+                created: "2017-10-12"
+              files:
+              - name: "mid498.raw.json"
+                content: ""
+              - name: "mid498.mdl.json"
+                content: ""
+              - name: "mid498.conn.json"
+                content: ""
+              - name: "mid498.prop.json"
+                content: ""
+            properties: {}
+        400:
+          description: "failed"
+      x-tags:
+      - tag: "model"
+definitions:
+  ModelFiles:
+    type: "object"
+    required:
+    - "files"
+    - "id"
+    properties:
+      id:
+        type: "string"
+      files:
+        type: "array"
+        items:
+          $ref: "#/definitions/ModelFiles_files"
+  ModelCont:
+    type: "object"
+    required:
+    - "conn"
+    - "mdl"
+    - "prop"
+    - "raw"
+    properties:
+      raw:
+        type: "object"
+        properties: {}
+      conn:
+        type: "object"
+        properties: {}
+      mdl:
+        type: "object"
+        properties: {}
+      prop:
+        type: "object"
+        properties: {}
+  Prometa:
+    type: "object"
+    required:
+    - "created"
+    - "name"
+    - "nodetype"
+    - "path"
+    properties:
+      name:
+        type: "string"
+      path:
+        type: "string"
+      nodetype:
+        type: "string"
+      created:
+        type: "string"
+    example:
+      name: "模型名称"
+      path: "d3/d4"
+      nodetype: "model"
+      created: "2017-10-12"
+  Meta:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+      meta:
+        $ref: "#/definitions/Meta_meta"
+    example:
+      id: "23456"
+      meta:
+        name: "模型名称"
+        path: "d3/d4"
+        nodetype: "model"
+        created: "2017-10-12"
+  ModelFiles_files:
+    required:
+    - "content"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      content:
+        type: "string"
+  Meta_meta:
+    required:
+    - "created"
+    - "name"
+    - "nodetype"
+    - "path"
+    properties:
+      name:
+        type: "string"
+      path:
+        type: "string"
+      nodetype:
+        type: "string"
+      created:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
